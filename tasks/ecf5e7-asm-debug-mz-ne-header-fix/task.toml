@@ -1,26 +1,36 @@
+# TOML configuration file for a Harbor task
+# Specifies task metadata, environment, and agent/verifier settings
+
+# Version of the task configuration schema
 version = "1.0"
 
+# Metadata section: describes the task for reference
 [metadata]
-author_name = "unknown"
-author_email = "unknown"
-difficulty = "hard"
-category = "asm-debug"
-tags = [ "assembly", "debugging", "binary-parsing", "legacy-formats",]
+author_name = "unknown"          # Name of the task author (not specified)
+author_email = "unknown"         # Email of the task author (not specified)
+difficulty = "hard"              # Task difficulty level (hard)
+category = "asm-debug"           # Category: assembly debugging
+tags = [ "assembly", "debugging", "binary-parsing", "legacy-formats",]  # Descriptive tags
 
+# Verifier settings: how the correctness check will run
 [verifier]
-timeout_sec = 300.0
+timeout_sec = 300.0              # Maximum time (seconds) allowed for the verifier to run (5 minutes)
 
+# Agent settings: how the AI agent will run to solve the task
 [agent]
-timeout_sec = 300.0
+timeout_sec = 300.0              # Maximum time (seconds) allowed for the agent to complete the task (5 minutes)
 
+# Environment settings: container/hardware resources for the task
 [environment]
-build_timeout_sec = 600.0
-cpus = 1
-memory_mb = 2048
-storage_mb = 10240
-gpus = 0
-allow_internet = true
+build_timeout_sec = 600.0        # Timeout for building the environment (10 minutes)
+cpus = 1                         # Number of CPU cores allocated to the container
+memory_mb = 2048                 # Memory (MiB) allocated (2 GiB)
+storage_mb = 10240               # Storage (MiB) allocated (10 GiB)
+gpus = 0                         # Number of GPUs allocated (none)
+allow_internet = true            # Whether the container has internet access
 
+# Environment variables specifically for the verifier (empty in this example)
 [verifier.env]
 
+# Environment variables for the solution/oracle (empty in this example)
 [solution.env]
